@@ -64,11 +64,11 @@ class UserProfile extends StatelessWidget {
                             ),
                             SettingsItem(
                               onTap: () {
-                                // if (model.isDark) {
-                                //   onThemeModeChanged!(ThemeMode.light);
-                                // } else {
-                                //   onThemeModeChanged!(ThemeMode.dark);
-                                // }
+                                if (model.isDark) {
+                                  onThemeModeChanged!(ThemeMode.light);
+                                } else {
+                                  onThemeModeChanged!(ThemeMode.dark);
+                                }
                               },
                               icons: Icons.dark_mode_rounded,
                               iconStyle: IconStyle(
@@ -110,8 +110,12 @@ class UserProfile extends StatelessWidget {
                                 Navigator.of(context)
                                     .pushNamed(AuthScreen.routeName);
                               },
-                              icons: Icons.exit_to_app_rounded,
+                              icons: Icons.exit_to_app_outlined,
                               title: "Sign Out",
+                                titleStyle: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                )
                             ),
                             SettingsItem(
                               onTap: () {
@@ -121,7 +125,7 @@ class UserProfile extends StatelessWidget {
                                 Navigator.of(context)
                                     .pushNamed(AuthScreen.routeName);
                               },
-                              icons: CupertinoIcons.delete_solid,
+                              icons: Icons.delete_forever_rounded,
                               title: "Delete account",
                               titleStyle: TextStyle(
                                 color: Colors.red,

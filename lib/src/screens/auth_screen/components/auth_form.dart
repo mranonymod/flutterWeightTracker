@@ -3,18 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weight_tracker/src/screens/home_screen/home_screen.dart';
 import 'package:weight_tracker/view/auth_screen_view_model.dart';
 import 'image_picker.dart';
-
+import 'dart:developer';
 class AuthForm extends StatefulWidget {
   final AuthScreenViewModel model;
-  const AuthForm({Key? key, required this.model}) : super(key: key);
-
+  final bool lg;
+  const AuthForm({Key? key, required this.model , required this.lg}) : super(key: key);
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
 
 class _AuthFormState extends State<AuthForm> {
   bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return Center(

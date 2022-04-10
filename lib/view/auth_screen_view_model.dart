@@ -17,7 +17,6 @@ class AuthScreenViewModel extends BaseModel {
   bool showPassword = false;
   final formKey = GlobalKey<FormState>();
   File? userImgfile;
-
   void pickImage(File? image) {
     userImgfile = image;
   }
@@ -71,12 +70,14 @@ class AuthScreenViewModel extends BaseModel {
     UserCredential currentuser;
     try {
       if (isLogin) {
+        print(isLogin);
         currentuser = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
-
+        print(currentuser);
         Fluttertoast.showToast(msg: 'Welcome back !');
         return true;
       } else {
+        print(isLogin);
         currentuser = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
@@ -88,7 +89,7 @@ class AuthScreenViewModel extends BaseModel {
         await ref.putFile(image!);
 
         final url = await ref.getDownloadURL();
-
+        print(currentuser);
         await FirebaseFirestore.instance
             .collection('users')
             .doc(currentuser.user!.uid)

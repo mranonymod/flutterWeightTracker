@@ -4,14 +4,20 @@ import 'package:weight_tracker/provider/base_view.dart';
 import 'package:weight_tracker/view/auth_screen_view_model.dart';
 import 'components/auth_form.dart';
 
+import 'dart:developer';
 class AuthScreen extends StatelessWidget {
   static String routeName = '/auth-screen';
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var args = false;
+    Map tp=ModalRoute.of(context)!.settings.arguments! as Map;
+    tp['login'] as bool ? args = true:'';
+    print('${tp['login']} $args');
     return BaseView<AuthScreenViewModel>(builder: (context, model, child) {
       return Scaffold(
+
         resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
@@ -61,7 +67,7 @@ class AuthScreen extends StatelessWidget {
               height: getProportionateScreenHeight(20),
             ),
             AuthForm(
-              model: model,
+              model: model, lg : args
             ),
             SizedBox(
               height: getProportionateScreenHeight(20),

@@ -3,6 +3,8 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/view/home_screen_view_model.dart';
 import 'line_graph.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:weight_tracker/src/models/weights_model.dart';
 
 class Body extends StatelessWidget {
   final HomeScreenViewModel model;
@@ -15,6 +17,7 @@ class Body extends StatelessWidget {
         horizontal: getProportionateScreenWidth(15),
         vertical: getProportionateScreenHeight(10),
       ),
+
       child: Column(
         children: [
           Padding(
@@ -156,6 +159,34 @@ class Body extends StatelessWidget {
                   LineChartSample2(),
                 ],
               )),
+          // StreamBuilder(
+          //
+          //     stream: FirebaseFirestore.instance
+          //         .collection('weights')
+          //         .doc(model.auth.currentUser!.uid)
+          //         .collection('userWeights')
+          //         .orderBy('time', descending: true)
+          //         .snapshots(),
+          //     builder: (context, AsyncSnapshot<QuerySnapshot> orderSnapshot) {
+          //       List<WeightsModel> weights = [];
+          //       if (orderSnapshot.connectionState == ConnectionState.waiting) {
+          //         return Center(child: CircularProgressIndicator());
+          //       } else {
+          //         final size = orderSnapshot.data!.docs.length;
+          //         if (size != 0) {
+          //           return LineChartSample2() ;
+          //         }
+          //         else
+          //           return Text(
+          //             'No Weights added , add some now ',
+          //             style: TextStyle(
+          //               color: Colors.grey,
+          //               fontWeight: FontWeight.bold,
+          //               fontSize: getProportionateScreenWidth(15),
+          //             ),
+          //           );
+          //       }
+          //     })
         ],
       ),
     );

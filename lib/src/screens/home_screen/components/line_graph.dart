@@ -1,10 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:weight_tracker/config/size_config.dart';
+import 'package:weight_tracker/src/models/weights_model.dart';
 
 class LineChartSample2 extends StatefulWidget {
+  final List<WeightsModel>? weights ;
   static String routeName = '/details-page';
-  const LineChartSample2({Key? key}) : super(key: key);
+  const LineChartSample2({Key? key, this.weights}) : super(key: key);
 
   @override
   _LineChartSample2State createState() => _LineChartSample2State();

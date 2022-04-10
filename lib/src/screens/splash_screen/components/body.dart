@@ -4,10 +4,9 @@ import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/constant/constant.dart';
 import 'package:weight_tracker/src/screens/auth_screen/auth_screen.dart';
 import 'package:weight_tracker/src/screens/splash_screen/components/carousel_card.dart';
-
+import 'package:weight_tracker/view/auth_screen_view_model.dart';
 class Body extends StatelessWidget {
   Body({Key? key}) : super(key: key);
-
   final controller = PageController(
     viewportFraction: 0.9,
   );
@@ -166,7 +165,7 @@ class Body extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(AuthScreen.routeName);
+                          .pushReplacementNamed(AuthScreen.routeName,arguments: {"login" : false});
                     },
                     child: Text(
                       'Start',
@@ -193,7 +192,10 @@ class Body extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(AuthScreen.routeName , arguments: {"login" : true});
+                        },
                         child: Text('Login'),
                       ),
                     ],
